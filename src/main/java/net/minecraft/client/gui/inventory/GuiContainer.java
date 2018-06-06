@@ -72,17 +72,17 @@ public abstract class GuiContainer extends GuiScreen
     /**
      * Draws the screen and all the components in it.
      */
-    public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         this.drawDefaultBackground();
         int var4 = this.field_147003_i;
         int var5 = this.field_147009_r;
-        this.func_146976_a(p_73863_3_, p_73863_1_, p_73863_2_);
+        this.func_146976_a(partialTicks, mouseX, mouseY);
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         RenderHelper.disableStandardItemLighting();
         GL11.glDisable(GL11.GL_LIGHTING);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
-        super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+        super.drawScreen(mouseX, mouseY, partialTicks);
         RenderHelper.enableGUIStandardItemLighting();
         GL11.glPushMatrix();
         GL11.glTranslatef((float)var4, (float)var5, 0.0F);
@@ -100,7 +100,7 @@ public abstract class GuiContainer extends GuiScreen
             Slot var9 = (Slot)this.field_147002_h.inventorySlots.get(var8);
             this.func_146977_a(var9);
 
-            if (this.func_146981_a(var9, p_73863_1_, p_73863_2_) && var9.func_111238_b())
+            if (this.func_146981_a(var9, mouseX, mouseY) && var9.func_111238_b())
             {
                 this.field_147006_u = var9;
                 GL11.glDisable(GL11.GL_LIGHTING);
@@ -115,7 +115,7 @@ public abstract class GuiContainer extends GuiScreen
             }
         }
 
-        this.func_146979_b(p_73863_1_, p_73863_2_);
+        this.func_146979_b(mouseX, mouseY);
         InventoryPlayer var15 = this.mc.thePlayer.inventory;
         ItemStack var16 = this.field_147012_x == null ? var15.getItemStack() : this.field_147012_x;
 
@@ -141,7 +141,7 @@ public abstract class GuiContainer extends GuiScreen
                 }
             }
 
-            this.func_146982_a(var16, p_73863_1_ - var4 - var17, p_73863_2_ - var5 - var11, var12);
+            this.func_146982_a(var16, mouseX - var4 - var17, mouseY - var5 - var11, var12);
         }
 
         if (this.field_146991_C != null)
@@ -166,7 +166,7 @@ public abstract class GuiContainer extends GuiScreen
         if (var15.getItemStack() == null && this.field_147006_u != null && this.field_147006_u.getHasStack())
         {
             ItemStack var19 = this.field_147006_u.getStack();
-            this.func_146285_a(var19, p_73863_1_, p_73863_2_);
+            this.func_146285_a(var19, mouseX, mouseY);
         }
 
         GL11.glEnable(GL11.GL_LIGHTING);

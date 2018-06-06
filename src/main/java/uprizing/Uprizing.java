@@ -6,8 +6,10 @@ import net.minecraft.client.settings.KeyBinding;
 import optifine.Config;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.input.Keyboard;
 import uprizing.mod.ModRepository;
 import uprizing.mods.WaypointsMod;
+import uprizing.test.TestGuiScreen;
 import uprizing.world.WorldTimeMode;
 
 import java.io.BufferedReader;
@@ -56,14 +58,22 @@ public class Uprizing {
         KeyBinding[] gameSettings = minecraft.gameSettings.keyBindings;
         KeyBinding[] uprizing = modRepository.getKeyBindings();
 
-        KeyBinding[] keyBindings = new KeyBinding[gameSettings.length + uprizing.length];
+        KeyBinding[] keyBindings = new KeyBinding[gameSettings.length + uprizing.length + 1];
         System.arraycopy(gameSettings, 0, keyBindings, 0, gameSettings.length);
         System.arraycopy(uprizing, 0, keyBindings, gameSettings.length, uprizing.length);
+
+        keyBindings[keyBindings.length - 1] = kb;
 
         minecraft.gameSettings.keyBindings = keyBindings;
     }
 
+    private KeyBinding kb = Stawlker.keyBinding("§a§ltest", Keyboard.KEY_V, "0");
+
     public void runTick(TickType tickType) {
+    	if (kb.isPressed()) {
+    		minecraft.displayGuiScreen(new TestGuiScreen());
+		}
+
         while (modRepository.hasNext())
             modRepository.next().runTick(tickType);
         modRepository.close();

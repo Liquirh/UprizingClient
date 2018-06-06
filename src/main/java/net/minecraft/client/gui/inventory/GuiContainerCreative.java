@@ -585,7 +585,7 @@ public class GuiContainerCreative extends InventoryEffectRenderer
     /**
      * Draws the screen and all the components in it.
      */
-    public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         boolean var4 = Mouse.isButtonDown(0);
         int var5 = this.field_147003_i;
@@ -595,7 +595,7 @@ public class GuiContainerCreative extends InventoryEffectRenderer
         int var9 = var7 + 14;
         int var10 = var8 + 112;
 
-        if (!this.field_147065_z && var4 && p_73863_1_ >= var7 && p_73863_2_ >= var8 && p_73863_1_ < var9 && p_73863_2_ < var10)
+        if (!this.field_147065_z && var4 && mouseX >= var7 && mouseY >= var8 && mouseX < var9 && mouseY < var10)
         {
             this.field_147066_y = this.func_147055_p();
         }
@@ -609,7 +609,7 @@ public class GuiContainerCreative extends InventoryEffectRenderer
 
         if (this.field_147066_y)
         {
-            this.field_147067_x = ((float)(p_73863_2_ - var8) - 7.5F) / ((float)(var10 - var8) - 15.0F);
+            this.field_147067_x = ((float)(mouseY - var8) - 7.5F) / ((float)(var10 - var8) - 15.0F);
 
             if (this.field_147067_x < 0.0F)
             {
@@ -624,7 +624,7 @@ public class GuiContainerCreative extends InventoryEffectRenderer
             ((GuiContainerCreative.ContainerCreative)this.field_147002_h).func_148329_a(this.field_147067_x);
         }
 
-        super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+        super.drawScreen(mouseX, mouseY, partialTicks);
         CreativeTabs[] var11 = CreativeTabs.creativeTabArray;
         int var12 = var11.length;
 
@@ -632,15 +632,15 @@ public class GuiContainerCreative extends InventoryEffectRenderer
         {
             CreativeTabs var14 = var11[var13];
 
-            if (this.func_147052_b(var14, p_73863_1_, p_73863_2_))
+            if (this.func_147052_b(var14, mouseX, mouseY))
             {
                 break;
             }
         }
 
-        if (this.field_147064_C != null && field_147058_w == CreativeTabs.tabInventory.getTabIndex() && this.func_146978_c(this.field_147064_C.xDisplayPosition, this.field_147064_C.yDisplayPosition, 16, 16, p_73863_1_, p_73863_2_))
+        if (this.field_147064_C != null && field_147058_w == CreativeTabs.tabInventory.getTabIndex() && this.func_146978_c(this.field_147064_C.xDisplayPosition, this.field_147064_C.yDisplayPosition, 16, 16, mouseX, mouseY))
         {
-            this.func_146279_a(I18n.format("inventory.binSlot"), p_73863_1_, p_73863_2_);
+            this.func_146279_a(I18n.format("inventory.binSlot"), mouseX, mouseY);
         }
 
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

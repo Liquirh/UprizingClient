@@ -347,17 +347,17 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
     /**
      * Draws the screen and all the components in it.
      */
-    public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         this.field_146812_y = null;
         this.drawDefaultBackground();
-        this.field_146803_h.func_148128_a(p_73863_1_, p_73863_2_, p_73863_3_);
+        this.field_146803_h.func_148128_a(mouseX, mouseY, partialTicks);
         this.drawCenteredString(this.fontRendererObj, I18n.format("multiplayer.title"), this.width / 2, 20, 16777215);
-        super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+        super.drawScreen(mouseX, mouseY, partialTicks);
 
         if (this.field_146812_y != null)
         {
-            this.func_146283_a(Lists.newArrayList(Splitter.on("\n").split(this.field_146812_y)), p_73863_1_, p_73863_2_);
+            this.func_146283_a(Lists.newArrayList(Splitter.on("\n").split(this.field_146812_y)), mouseX, mouseY);
         }
     }
 

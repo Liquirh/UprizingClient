@@ -464,10 +464,10 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
     /**
      * Draws the screen and all the components in it.
      */
-    public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         GL11.glDisable(GL11.GL_ALPHA_TEST);
-        this.renderSkybox(p_73863_1_, p_73863_2_, p_73863_3_);
+        this.renderSkybox(mouseX, mouseY, partialTicks);
         GL11.glEnable(GL11.GL_ALPHA_TEST);
         Tessellator var4 = Tessellator.instance;
         short var5 = 274;
@@ -519,7 +519,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
             this.drawString(this.fontRendererObj, this.field_146972_A, (this.width - this.field_92024_r) / 2, ((GuiButton)this.buttonList.get(0)).field_146129_i - 12, -1);
         }
 
-        super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+        super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     /**

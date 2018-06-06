@@ -200,13 +200,13 @@ public class GuiScreenResourcePacks extends GuiScreen
     /**
      * Draws the screen and all the components in it.
      */
-    public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         this.func_146278_c(0);
-        this.field_146970_i.func_148128_a(p_73863_1_, p_73863_2_, p_73863_3_);
-        this.field_146967_r.func_148128_a(p_73863_1_, p_73863_2_, p_73863_3_);
+        this.field_146970_i.func_148128_a(mouseX, mouseY, partialTicks);
+        this.field_146967_r.func_148128_a(mouseX, mouseY, partialTicks);
         this.drawCenteredString(this.fontRendererObj, I18n.format("resourcePack.title"), this.width / 2, 16, 16777215);
         this.drawCenteredString(this.fontRendererObj, I18n.format("resourcePack.folderInfo"), this.width / 2 - 77, this.height - 26, 8421504);
-        super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+        super.drawScreen(mouseX, mouseY, partialTicks);
     }
 }

@@ -395,7 +395,7 @@ public class GuiChat extends GuiScreen implements GuiYesNoCallback
     /**
      * Draws the screen and all the components in it.
      */
-    public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
+    public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         drawRect(2, this.height - 14, this.width - 2, this.height - 2, Integer.MIN_VALUE);
         this.field_146415_a.drawTextBox();
@@ -424,16 +424,16 @@ public class GuiChat extends GuiScreen implements GuiYesNoCallback
 
                 if (var6 != null)
                 {
-                    this.func_146285_a(var6, p_73863_1_, p_73863_2_);
+                    this.func_146285_a(var6, mouseX, mouseY);
                 }
                 else
                 {
-                    this.func_146279_a(EnumChatFormatting.RED + "Invalid Item!", p_73863_1_, p_73863_2_);
+                    this.func_146279_a(EnumChatFormatting.RED + "Invalid Item!", mouseX, mouseY);
                 }
             }
             else if (var5.getAction() == HoverEvent.Action.SHOW_TEXT)
             {
-                this.func_146283_a(Splitter.on("\n").splitToList(var5.getValue().getFormattedText()), p_73863_1_, p_73863_2_);
+                this.func_146283_a(Splitter.on("\n").splitToList(var5.getValue().getFormattedText()), mouseX, mouseY);
             }
             else if (var5.getAction() == HoverEvent.Action.SHOW_ACHIEVEMENT)
             {
@@ -452,18 +452,18 @@ public class GuiChat extends GuiScreen implements GuiYesNoCallback
                         var10.addAll(this.fontRendererObj.listFormattedStringToWidth(var9, 150));
                     }
 
-                    this.func_146283_a(var10, p_73863_1_, p_73863_2_);
+                    this.func_146283_a(var10, mouseX, mouseY);
                 }
                 else
                 {
-                    this.func_146279_a(EnumChatFormatting.RED + "Invalid statistic/achievement!", p_73863_1_, p_73863_2_);
+                    this.func_146279_a(EnumChatFormatting.RED + "Invalid statistic/achievement!", mouseX, mouseY);
                 }
             }
 
             GL11.glDisable(GL11.GL_LIGHTING);
         }
 
-        super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
+        super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     public void func_146406_a(String[] p_146406_1_)

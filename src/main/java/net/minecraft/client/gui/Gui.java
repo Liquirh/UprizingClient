@@ -41,38 +41,35 @@ public class Gui
     /**
      * Draws a solid color rectangle with the specified coordinates and color. Args: x1, y1, x2, y2, color
      */
-    public static void drawRect(int p_73734_0_, int p_73734_1_, int p_73734_2_, int p_73734_3_, int p_73734_4_)
-    {
+    public static void drawRect(int left, int top, int right, int bottom, int color) {
         int var5;
 
-        if (p_73734_0_ < p_73734_2_)
-        {
-            var5 = p_73734_0_;
-            p_73734_0_ = p_73734_2_;
-            p_73734_2_ = var5;
+        if (left < right) {
+            var5 = left;
+            left = right;
+            right = var5;
         }
 
-        if (p_73734_1_ < p_73734_3_)
-        {
-            var5 = p_73734_1_;
-            p_73734_1_ = p_73734_3_;
-            p_73734_3_ = var5;
+        if (top < bottom) {
+            var5 = top;
+            top = bottom;
+            bottom = var5;
         }
 
-        float var10 = (float)(p_73734_4_ >> 24 & 255) / 255.0F;
-        float var6 = (float)(p_73734_4_ >> 16 & 255) / 255.0F;
-        float var7 = (float)(p_73734_4_ >> 8 & 255) / 255.0F;
-        float var8 = (float)(p_73734_4_ & 255) / 255.0F;
+        float var10 = (float) (color >> 24 & 255) / 255.0F;
+        float var6 = (float) (color >> 16 & 255) / 255.0F;
+        float var7 = (float) (color >> 8 & 255) / 255.0F;
+        float var8 = (float) (color & 255) / 255.0F;
         Tessellator var9 = Tessellator.instance;
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glDisable(GL11.GL_TEXTURE_2D);
         OpenGlHelper.glBlendFunc(770, 771, 1, 0);
         GL11.glColor4f(var6, var7, var8, var10);
         var9.startDrawingQuads();
-        var9.addVertex((double)p_73734_0_, (double)p_73734_3_, 0.0D);
-        var9.addVertex((double)p_73734_2_, (double)p_73734_3_, 0.0D);
-        var9.addVertex((double)p_73734_2_, (double)p_73734_1_, 0.0D);
-        var9.addVertex((double)p_73734_0_, (double)p_73734_1_, 0.0D);
+        var9.addVertex((double) left, (double) bottom, 0.0D);
+        var9.addVertex((double) right, (double) bottom, 0.0D);
+        var9.addVertex((double) right, (double) top, 0.0D);
+        var9.addVertex((double) left, (double) top, 0.0D);
         var9.draw();
         GL11.glEnable(GL11.GL_TEXTURE_2D);
         GL11.glDisable(GL11.GL_BLEND);
@@ -81,16 +78,16 @@ public class Gui
     /**
      * Draws a rectangle with a vertical gradient between the specified colors.
      */
-    protected void drawGradientRect(int p_73733_1_, int p_73733_2_, int p_73733_3_, int p_73733_4_, int p_73733_5_, int p_73733_6_)
+    protected void drawGradientRect(int left, int top, int right, int bottom, int startColor, int endColor)
     {
-        float var7 = (float)(p_73733_5_ >> 24 & 255) / 255.0F;
-        float var8 = (float)(p_73733_5_ >> 16 & 255) / 255.0F;
-        float var9 = (float)(p_73733_5_ >> 8 & 255) / 255.0F;
-        float var10 = (float)(p_73733_5_ & 255) / 255.0F;
-        float var11 = (float)(p_73733_6_ >> 24 & 255) / 255.0F;
-        float var12 = (float)(p_73733_6_ >> 16 & 255) / 255.0F;
-        float var13 = (float)(p_73733_6_ >> 8 & 255) / 255.0F;
-        float var14 = (float)(p_73733_6_ & 255) / 255.0F;
+        float var7 = (float)(startColor >> 24 & 255) / 255.0F;
+        float var8 = (float)(startColor >> 16 & 255) / 255.0F;
+        float var9 = (float)(startColor >> 8 & 255) / 255.0F;
+        float var10 = (float)(startColor & 255) / 255.0F;
+        float var11 = (float)(endColor >> 24 & 255) / 255.0F;
+        float var12 = (float)(endColor >> 16 & 255) / 255.0F;
+        float var13 = (float)(endColor >> 8 & 255) / 255.0F;
+        float var14 = (float)(endColor & 255) / 255.0F;
         GL11.glDisable(GL11.GL_TEXTURE_2D);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glDisable(GL11.GL_ALPHA_TEST);
@@ -99,11 +96,11 @@ public class Gui
         Tessellator var15 = Tessellator.instance;
         var15.startDrawingQuads();
         var15.setColorRGBA_F(var8, var9, var10, var7);
-        var15.addVertex((double)p_73733_3_, (double)p_73733_2_, (double)this.zLevel);
-        var15.addVertex((double)p_73733_1_, (double)p_73733_2_, (double)this.zLevel);
+        var15.addVertex((double)right, (double)top, (double)this.zLevel);
+        var15.addVertex((double)left, (double)top, (double)this.zLevel);
         var15.setColorRGBA_F(var12, var13, var14, var11);
-        var15.addVertex((double)p_73733_1_, (double)p_73733_4_, (double)this.zLevel);
-        var15.addVertex((double)p_73733_3_, (double)p_73733_4_, (double)this.zLevel);
+        var15.addVertex((double)left, (double)bottom, (double)this.zLevel);
+        var15.addVertex((double)right, (double)bottom, (double)this.zLevel);
         var15.draw();
         GL11.glShadeModel(GL11.GL_FLAT);
         GL11.glDisable(GL11.GL_BLEND);
