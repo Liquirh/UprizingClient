@@ -402,12 +402,12 @@ public class GuiContainerCreative extends InventoryEffectRenderer
     /**
      * Called when the mouse is clicked.
      */
-    protected void mouseClicked(int p_73864_1_, int p_73864_2_, int p_73864_3_)
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton)
     {
-        if (p_73864_3_ == 0)
+        if (mouseButton == 0)
         {
-            int var4 = p_73864_1_ - this.field_147003_i;
-            int var5 = p_73864_2_ - this.field_147009_r;
+            int var4 = mouseX - this.field_147003_i;
+            int var5 = mouseY - this.field_147009_r;
             CreativeTabs[] var6 = CreativeTabs.creativeTabArray;
             int var7 = var6.length;
 
@@ -422,7 +422,7 @@ public class GuiContainerCreative extends InventoryEffectRenderer
             }
         }
 
-        super.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
+        super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     protected void mouseMovedOrUp(int p_146286_1_, int p_146286_2_, int p_146286_3_)

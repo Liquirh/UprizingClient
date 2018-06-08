@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+@Deprecated
 class MotionBlur { // TODO: in the main gui, apply shader when the gui will be closed
 
     private static final String KEY = "uprizing";

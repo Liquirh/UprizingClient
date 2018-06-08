@@ -58,7 +58,7 @@ public class GuiCreateFlatWorld extends GuiScreen
         this.buttonList.add(new GuiButton(0, this.width / 2 - 155, this.height - 28, 150, 20, I18n.format("gui.done")));
         this.buttonList.add(new GuiButton(5, this.width / 2 + 5, this.height - 52, 150, 20, I18n.format("createWorld.customize.presets")));
         this.buttonList.add(new GuiButton(1, this.width / 2 + 5, this.height - 28, 150, 20, I18n.format("gui.cancel")));
-        this.field_146389_t.field_146125_m = this.field_146388_u.field_146125_m = false;
+        this.field_146389_t.visible = this.field_146388_u.visible = false;
         this.field_146387_g.func_82645_d();
         this.func_146375_g();
     }

@@ -82,17 +82,17 @@ public class GuiControls extends GuiScreen
     /**
      * Called when the mouse is clicked.
      */
-    protected void mouseClicked(int p_73864_1_, int p_73864_2_, int p_73864_3_)
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton)
     {
         if (this.field_146491_f != null)
         {
-            this.field_146497_i.setKeyCodeSave(this.field_146491_f, -100 + p_73864_3_);
+            this.field_146497_i.setKeyCodeSave(this.field_146491_f, -100 + mouseButton);
             this.field_146491_f = null;
             KeyBinding.resetKeyBindingArrayAndHash();
         }
-        else if (p_73864_3_ != 0 || !this.field_146494_r.func_148179_a(p_73864_1_, p_73864_2_, p_73864_3_))
+        else if (mouseButton != 0 || !this.field_146494_r.func_148179_a(mouseX, mouseY, mouseButton))
         {
-            super.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
+            super.mouseClicked(mouseX, mouseY, mouseButton);
         }
     }
 

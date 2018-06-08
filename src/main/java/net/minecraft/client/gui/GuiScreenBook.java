@@ -121,15 +121,15 @@ public class GuiScreenBook extends GuiScreen
 
     private void func_146464_h()
     {
-        this.field_146470_A.field_146125_m = !this.field_146480_s && (this.field_146484_x < this.field_146476_w - 1 || this.field_146475_i);
-        this.field_146471_B.field_146125_m = !this.field_146480_s && this.field_146484_x > 0;
-        this.field_146472_C.field_146125_m = !this.field_146475_i || !this.field_146480_s;
+        this.field_146470_A.visible = !this.field_146480_s && (this.field_146484_x < this.field_146476_w - 1 || this.field_146475_i);
+        this.field_146471_B.visible = !this.field_146480_s && this.field_146484_x > 0;
+        this.field_146472_C.visible = !this.field_146475_i || !this.field_146480_s;
 
         if (this.field_146475_i)
         {
-            this.field_146465_D.field_146125_m = !this.field_146480_s;
-            this.field_146469_F.field_146125_m = this.field_146480_s;
-            this.field_146467_E.field_146125_m = this.field_146480_s;
+            this.field_146465_D.visible = !this.field_146480_s;
+            this.field_146469_F.visible = this.field_146480_s;
+            this.field_146467_E.visible = this.field_146480_s;
             this.field_146467_E.enabled = this.field_146482_z.trim().length() > 0;
         }
     }
@@ -455,9 +455,9 @@ public class GuiScreenBook extends GuiScreen
 
         public void drawButton(Minecraft p_146112_1_, int p_146112_2_, int p_146112_3_)
         {
-            if (this.field_146125_m)
+            if (this.visible)
             {
-                boolean var4 = p_146112_2_ >= this.field_146128_h && p_146112_3_ >= this.field_146129_i && p_146112_2_ < this.field_146128_h + this.field_146120_f && p_146112_3_ < this.field_146129_i + this.field_146121_g;
+                boolean var4 = p_146112_2_ >= this.xPosition && p_146112_3_ >= this.yPosition && p_146112_2_ < this.xPosition + this.width && p_146112_3_ < this.yPosition + this.height;
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                 p_146112_1_.getTextureManager().bindTexture(GuiScreenBook.field_146466_f);
                 int var5 = 0;
@@ -473,7 +473,7 @@ public class GuiScreenBook extends GuiScreen
                     var6 += 13;
                 }
 
-                this.drawTexturedModalRect(this.field_146128_h, this.field_146129_i, var5, var6, 23, 13);
+                this.drawTexturedModalRect(this.xPosition, this.yPosition, var5, var6, 23, 13);
             }
         }
     }

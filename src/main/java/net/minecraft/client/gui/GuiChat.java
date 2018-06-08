@@ -182,9 +182,9 @@ public class GuiChat extends GuiScreen implements GuiYesNoCallback
     /**
      * Called when the mouse is clicked.
      */
-    protected void mouseClicked(int p_73864_1_, int p_73864_2_, int p_73864_3_)
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton)
     {
-        if (p_73864_3_ == 0 && this.mc.gameSettings.chatLinks)
+        if (mouseButton == 0 && this.mc.gameSettings.chatLinks)
         {
             IChatComponent var4 = this.mc.ingameGUI.getChatGUI().func_146236_a(Mouse.getX(), Mouse.getY());
 
@@ -265,8 +265,8 @@ public class GuiChat extends GuiScreen implements GuiYesNoCallback
             }
         }
 
-        this.field_146415_a.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
-        super.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
+        this.field_146415_a.mouseClicked(mouseX, mouseY, mouseButton);
+        super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     public void confirmClicked(boolean p_73878_1_, int p_73878_2_)

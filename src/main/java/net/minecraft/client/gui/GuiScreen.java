@@ -37,7 +37,7 @@ public class GuiScreen extends Gui
     public int height;
 
     /** A list of all the buttons in this container. */
-    protected List buttonList = new ArrayList();
+    protected List<GuiButton> buttonList = new ArrayList<>();
 
     /** A list of all the labels in this container. */
     protected List labelList = new ArrayList();
@@ -224,18 +224,18 @@ public class GuiScreen extends Gui
     /**
      * Called when the mouse is clicked.
      */
-    protected void mouseClicked(int p_73864_1_, int p_73864_2_, int p_73864_3_)
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton)
     {
-        if (p_73864_3_ == 0)
+        if (mouseButton == 0)
         {
             for (int var4 = 0; var4 < this.buttonList.size(); ++var4)
             {
                 GuiButton var5 = (GuiButton)this.buttonList.get(var4);
 
-                if (var5.mousePressed(this.mc, p_73864_1_, p_73864_2_))
+                if (var5.mousePressed(this.mc, mouseX, mouseY))
                 {
                     this.selectedButton = var5;
-                    var5.func_146113_a(this.mc.getSoundHandler());
+                    var5.playPressSound(this.mc.getSoundHandler());
                     this.actionPerformed(var5);
                 }
             }

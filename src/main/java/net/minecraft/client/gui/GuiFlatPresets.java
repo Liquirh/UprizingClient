@@ -68,10 +68,10 @@ public class GuiFlatPresets extends GuiScreen
     /**
      * Called when the mouse is clicked.
      */
-    protected void mouseClicked(int p_73864_1_, int p_73864_2_, int p_73864_3_)
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton)
     {
-        this.field_146433_u.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
-        super.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
+        this.field_146433_u.mouseClicked(mouseX, mouseY, mouseButton);
+        super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     /**

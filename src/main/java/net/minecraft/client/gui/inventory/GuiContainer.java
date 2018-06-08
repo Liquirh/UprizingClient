@@ -317,20 +317,20 @@ public abstract class GuiContainer extends GuiScreen
     /**
      * Called when the mouse is clicked.
      */
-    protected void mouseClicked(int p_73864_1_, int p_73864_2_, int p_73864_3_)
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton)
     {
-        super.mouseClicked(p_73864_1_, p_73864_2_, p_73864_3_);
-        boolean var4 = p_73864_3_ == this.mc.gameSettings.keyBindPickBlock.getKeyCode() + 100;
-        Slot var5 = this.func_146975_c(p_73864_1_, p_73864_2_);
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+        boolean var4 = mouseButton == this.mc.gameSettings.keyBindPickBlock.getKeyCode() + 100;
+        Slot var5 = this.func_146975_c(mouseX, mouseY);
         long var6 = Minecraft.getSystemTime();
-        this.field_146993_M = this.field_146998_K == var5 && var6 - this.field_146997_J < 250L && this.field_146992_L == p_73864_3_;
+        this.field_146993_M = this.field_146998_K == var5 && var6 - this.field_146997_J < 250L && this.field_146992_L == mouseButton;
         this.field_146995_H = false;
 
-        if (p_73864_3_ == 0 || p_73864_3_ == 1 || var4)
+        if (mouseButton == 0 || mouseButton == 1 || var4)
         {
             int var8 = this.field_147003_i;
             int var9 = this.field_147009_r;
-            boolean var10 = p_73864_1_ < var8 || p_73864_2_ < var9 || p_73864_1_ >= var8 + this.field_146999_f || p_73864_2_ >= var9 + this.field_147000_g;
+            boolean var10 = mouseX < var8 || mouseY < var9 || mouseX >= var8 + this.field_146999_f || mouseY >= var9 + this.field_147000_g;
             int var11 = -1;
 
             if (var5 != null)
@@ -357,7 +357,7 @@ public abstract class GuiContainer extends GuiScreen
                     {
                         this.field_147005_v = var5;
                         this.field_147012_x = null;
-                        this.field_147004_w = p_73864_3_ == 1;
+                        this.field_147004_w = mouseButton == 1;
                     }
                     else
                     {
@@ -368,9 +368,9 @@ public abstract class GuiContainer extends GuiScreen
                 {
                     if (this.mc.thePlayer.inventory.getItemStack() == null)
                     {
-                        if (p_73864_3_ == this.mc.gameSettings.keyBindPickBlock.getKeyCode() + 100)
+                        if (mouseButton == this.mc.gameSettings.keyBindPickBlock.getKeyCode() + 100)
                         {
-                            this.func_146984_a(var5, var11, p_73864_3_, 3);
+                            this.func_146984_a(var5, var11, mouseButton, 3);
                         }
                         else
                         {
@@ -387,7 +387,7 @@ public abstract class GuiContainer extends GuiScreen
                                 var13 = 4;
                             }
 
-                            this.func_146984_a(var5, var11, p_73864_3_, var13);
+                            this.func_146984_a(var5, var11, mouseButton, var13);
                         }
 
                         this.field_146995_H = true;
@@ -395,14 +395,14 @@ public abstract class GuiContainer extends GuiScreen
                     else
                     {
                         this.field_147007_t = true;
-                        this.field_146988_G = p_73864_3_;
+                        this.field_146988_G = mouseButton;
                         this.field_147008_s.clear();
 
-                        if (p_73864_3_ == 0)
+                        if (mouseButton == 0)
                         {
                             this.field_146987_F = 0;
                         }
-                        else if (p_73864_3_ == 1)
+                        else if (mouseButton == 1)
                         {
                             this.field_146987_F = 1;
                         }
@@ -413,7 +413,7 @@ public abstract class GuiContainer extends GuiScreen
 
         this.field_146998_K = var5;
         this.field_146997_J = var6;
-        this.field_146992_L = p_73864_3_;
+        this.field_146992_L = mouseButton;
     }
 
     protected void mouseClickMove(int p_146273_1_, int p_146273_2_, int p_146273_3_, long p_146273_4_)

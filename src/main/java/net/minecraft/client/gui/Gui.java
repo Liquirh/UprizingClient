@@ -12,7 +12,6 @@ public class Gui
     public static final ResourceLocation statIcons = new ResourceLocation("textures/gui/container/stats_icons.png");
     public static final ResourceLocation icons = new ResourceLocation("textures/gui/icons.png");
     protected float zLevel;
-    private static final String __OBFID = "CL_00000662";
 
     protected void drawHorizontalLine(int p_73730_1_, int p_73730_2_, int p_73730_3_, int p_73730_4_)
     {
@@ -75,6 +74,25 @@ public class Gui
         GL11.glDisable(GL11.GL_BLEND);
     }
 
+	public void test(int x, int y, int width, int height, int color) {
+		float var10 = (float) (color >> 24 & 255) / 255.0F;
+		float var6 = (float) (color >> 16 & 255) / 255.0F;
+		float var7 = (float) (color >> 8 & 255) / 255.0F;
+		float var8 = (float) (color & 255) / 255.0F;
+		Tessellator var9 = Tessellator.instance;
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glDisable(GL11.GL_TEXTURE_2D);
+		GL11.glColor4f(var6, var7, var8, var10);
+		var9.startDrawingQuads();
+		var9.addVertex((double)x, (double)(y + height), (double)this.zLevel);
+		var9.addVertex((double)(x + width), (double)(y + height), (double)this.zLevel);
+		var9.addVertex((double)(x + width), (double)(y), (double)this.zLevel);
+		var9.addVertex((double) x, (double)(y), (double)this.zLevel);
+		var9.draw();
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glDisable(GL11.GL_BLEND);
+	}
+
     /**
      * Draws a rectangle with a vertical gradient between the specified colors.
      */
@@ -111,9 +129,9 @@ public class Gui
     /**
      * Renders the specified text to the screen, center-aligned.
      */
-    public void drawCenteredString(FontRenderer p_73732_1_, String p_73732_2_, int p_73732_3_, int p_73732_4_, int p_73732_5_)
+    public void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, int color)
     {
-        p_73732_1_.drawStringWithShadow(p_73732_2_, p_73732_3_ - p_73732_1_.getStringWidth(p_73732_2_) / 2, p_73732_4_, p_73732_5_);
+        fontRendererIn.drawStringWithShadow(text, x - fontRendererIn.getStringWidth(text) / 2, y, color);
     }
 
     /**
