@@ -74,25 +74,6 @@ public class Gui
         GL11.glDisable(GL11.GL_BLEND);
     }
 
-	public void test(int x, int y, int width, int height, int color) {
-		float var10 = (float) (color >> 24 & 255) / 255.0F;
-		float var6 = (float) (color >> 16 & 255) / 255.0F;
-		float var7 = (float) (color >> 8 & 255) / 255.0F;
-		float var8 = (float) (color & 255) / 255.0F;
-		Tessellator var9 = Tessellator.instance;
-		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glDisable(GL11.GL_TEXTURE_2D);
-		GL11.glColor4f(var6, var7, var8, var10);
-		var9.startDrawingQuads();
-		var9.addVertex((double)x, (double)(y + height), (double)this.zLevel);
-		var9.addVertex((double)(x + width), (double)(y + height), (double)this.zLevel);
-		var9.addVertex((double)(x + width), (double)(y), (double)this.zLevel);
-		var9.addVertex((double) x, (double)(y), (double)this.zLevel);
-		var9.draw();
-		GL11.glEnable(GL11.GL_TEXTURE_2D);
-		GL11.glDisable(GL11.GL_BLEND);
-	}
-
     /**
      * Draws a rectangle with a vertical gradient between the specified colors.
      */
@@ -137,9 +118,9 @@ public class Gui
     /**
      * Renders the specified text to the screen.
      */
-    public void drawString(FontRenderer p_73731_1_, String p_73731_2_, int p_73731_3_, int p_73731_4_, int p_73731_5_)
+    public void drawString(FontRenderer p_73731_1_, String text, int x, int y, int color)
     {
-        p_73731_1_.drawStringWithShadow(p_73731_2_, p_73731_3_, p_73731_4_, p_73731_5_);
+        p_73731_1_.drawStringWithShadow(text, x, y, color);
     }
 
     /**
@@ -193,5 +174,24 @@ public class Gui
         var12.addVertexWithUV((double)(p_152125_0_ + p_152125_6_), (double)p_152125_1_, 0.0D, (double)((p_152125_2_ + (float)p_152125_4_) * var10), (double)(p_152125_3_ * var11));
         var12.addVertexWithUV((double)p_152125_0_, (double)p_152125_1_, 0.0D, (double)(p_152125_2_ * var10), (double)(p_152125_3_ * var11));
         var12.draw();
+    }
+
+    public void drawSexyRect(int x, int y, int width, int height, int color) {
+        float var10 = (float) (color >> 24 & 255) / 255.0F;
+        float var6 = (float) (color >> 16 & 255) / 255.0F;
+        float var7 = (float) (color >> 8 & 255) / 255.0F;
+        float var8 = (float) (color & 255) / 255.0F;
+        Tessellator var9 = Tessellator.instance;
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        GL11.glColor4f(var6, var7, var8, var10);
+        var9.startDrawingQuads();
+        var9.addVertex((double)x, (double)(y + height), (double) zLevel);
+        var9.addVertex((double)(x + width), (double)(y + height), (double) zLevel);
+        var9.addVertex((double)(x + width), (double)(y), (double) zLevel);
+        var9.addVertex((double) x, (double)(y), (double) zLevel);
+        var9.draw();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        GL11.glDisable(GL11.GL_BLEND);
     }
 }

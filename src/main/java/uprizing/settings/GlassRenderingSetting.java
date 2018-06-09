@@ -10,11 +10,6 @@ public class GlassRenderingSetting extends BooleanSetting {
 	}
 
 	@Override
-	public final String getAsString() {
-		return value ? "ALL" : "NOTHING";
-	}
-
-	@Override
 	public final void pressButton(Minecraft minecraft) {
 		super.pressButton(minecraft);
 		minecraft.renderGlobal.loadRenderers();

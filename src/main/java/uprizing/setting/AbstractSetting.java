@@ -8,7 +8,7 @@ import uprizing.Merguez;
 import uprizing.Stawlker;
 
 @Getter
-abstract class AbstractSetting extends Gui implements Setting {
+abstract class AbstractSetting extends Gui implements Setting { // TODO: Temporary extending Gui
 
 	private final String name, configKey;
 	private int buttonX, buttonY, buttonWidth, buttonHeight;
@@ -39,15 +39,12 @@ abstract class AbstractSetting extends Gui implements Setting {
 		return mouseX >= buttonX && mouseY >= buttonY && mouseX < buttonX + buttonWidth && mouseY < buttonY + buttonHeight;
 	}
 
-	public void drawButton(FontRenderer fontRenderer, int mouseX, int mouseY) { // TODO: retirer le extends Gui, mettre Drawer ou autre
+	public void drawButton(FontRenderer fontRenderer, int mouseX, int mouseY) {
 		if (isHovered(mouseX, mouseY)) {
-			test(buttonX, buttonY, buttonWidth, buttonHeight, Merguez.C); // TODO: retirer
+			drawSexyRect(buttonX, buttonY, buttonWidth, buttonHeight, Merguez.C);
 		}
 
 		drawString(fontRenderer, name + ": " + getAsString(), buttonX + 1 + 4 + 4, buttonY + 1, Merguez.D);
-		//drawCenteredString(minecraft.fontRenderer, setting.getDisplayName(), x + width / 2, y + (height - 8) / 2, 14737632);
-
-		// TODO: slider, etc.. en orange
 	}
 
 	@Override

@@ -3,8 +3,8 @@ package uprizing.category;
 import lombok.Getter;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
-import uprizing.setting.Setting;
 import uprizing.Merguez;
+import uprizing.setting.Setting;
 
 @Getter
 public class Category extends Gui { // TODO: retirer
