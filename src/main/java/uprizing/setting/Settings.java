@@ -2,7 +2,7 @@ package uprizing.setting;
 
 public class Settings {
 
-	public static final int CHAT_BACKGROUND = 0, GLASS_RENDERING = 1, SCOREBOARD_SCORES = 2, SCOREBOARD_TEXT_SHADOW = 3;
+	public static final int CHAT_BACKGROUND = 0, GLASS_RENDERING = 1, WORLD_TIME = 2, SCOREBOARD_SCORES = 3, SCOREBOARD_TEXT_SHADOW = 4;
 
 	private transient Setting[] elements = {};
 

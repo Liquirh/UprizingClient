@@ -13,11 +13,15 @@ public interface Setting {
 
 	String getConfigKey();
 
-	void parseValue(String configValue);
+	void parseValue(String configValue); // TODO: rename
 
 	boolean getAsBoolean();
 
 	String getAsString();
+
+	long getAsLong();
+
+	int getAsInt();
 
 	boolean isHovered(int mouseX, int mouseY);
 

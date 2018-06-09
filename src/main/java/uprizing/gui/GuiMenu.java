@@ -1,9 +1,10 @@
 package uprizing.gui;
 
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
+import uprizing.Merguez;
 import uprizing.Uprizing;
 import uprizing.category.Category;
-import uprizing.Merguez;
 import uprizing.setting.Setting;
 
 public class GuiMenu extends GuiScreen {
@@ -35,12 +36,14 @@ public class GuiMenu extends GuiScreen {
 			height - (height / Merguez.F) + Merguez.V, // vertical
 				Merguez.A);
 
-		drawString(uprizing.getMinecraft().fontRenderer, category.getName(),
+		final FontRenderer fontRenderer = uprizing.getMinecraft().fontRenderer;
+
+		drawString(fontRenderer, category.getName(),
 			width / Merguez.F + 8 + 1, // x
-			(height / Merguez.F) + Merguez.V + 10, // y
+			(height / Merguez.F) + Merguez.V + 6 + 1, // y
 			Merguez.B);
 
-		category.draw(uprizing.getMinecraft().fontRenderer, mouseX, mouseY);
+		category.draw(fontRenderer, mouseX, mouseY);
 	}
 
 	@Override
@@ -53,7 +56,7 @@ public class GuiMenu extends GuiScreen {
 
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-		System.out.println("mouseClicked");
+		// TODO: LOGGER - System.out.println("mouseClicked");
 
 		if (mouseButton != 0) return; // pas un clique droit
 
@@ -68,12 +71,12 @@ public class GuiMenu extends GuiScreen {
 
 	@Override
 	protected void mouseMovedOrUp(int p_146286_1_, int p_146286_2_, int p_146286_3_) {
-		System.out.println("mouseMovedOrUp");
+		// TODO: LOGGER - System.out.println("mouseMovedOrUp");
 	}
 
 	@Override
 	protected void mouseClickMove(int p_146273_1_, int p_146273_2_, int p_146273_3_, long p_146273_4_) {
-		System.out.println("mouseClickMove");
+		// TODO: LOGGER - System.out.println("mouseClickMove");
 	}
 
 	@Override
@@ -83,7 +86,7 @@ public class GuiMenu extends GuiScreen {
 
 	@Override
 	public void onGuiClosed() {
-		System.out.println("handle close");
+		// TODO: LOGGER - System.out.println("handle close");
 		// TODO: delete button UNIQUEMENT ceux render
 
 		category.resetButtons();

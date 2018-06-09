@@ -32,7 +32,7 @@ public class Category extends Gui { // TODO: retirer
 	public void draw(FontRenderer fontRenderer, int mouseX, int mouseY) {
 		for (int i = 0; i < size; i++) {
 			final SubCategory subCategory = elements[i];
-			drawString(fontRenderer, subCategory.getName(), subCategory.getTextX(), subCategory.getTextY(), Merguez.E);
+			fontRenderer.drawStringWithShadow(subCategory.getName(), subCategory.getTextX(), subCategory.getTextY(), Merguez.E);
 
 			for (int j = 0; j < subCategory.size(); j++) {
 				final Setting setting = subCategory.get(j);
@@ -55,21 +55,21 @@ public class Category extends Gui { // TODO: retirer
 	}
 
 	public void updateButtons(int width, int height) {
-		int count = 1;
+		int count = 0;
 
 		for (int i = 0; i < size; i++) {
 			final SubCategory subCategory = elements[i];
 			count++;
 
-			subCategory.setTextX(width / Merguez.F + 8 + 4 + 1);
-			subCategory.setTextY((height / Merguez.F) + Merguez.V + (count * 10) + 1);
+			subCategory.setTextX((width / Merguez.F) + 8 + 4 + 1);
+			subCategory.setTextY((height / Merguez.F) + Merguez.V + (count * 10) + 1 + Merguez.G);
 
 			for (int j = 0; j < subCategory.size(); j++) {
 				final Setting setting = subCategory.get(j);
 				count++;
 
-				final int buttonX = width / Merguez.F + 8;
-				final int buttonY = (height / Merguez.F) + Merguez.V + (count * 10);
+				final int buttonX = (width / Merguez.F) + 8;
+				final int buttonY = (height / Merguez.F) + Merguez.V + (count * 10) + Merguez.G;
 				final int buttonWidth = width - (buttonX * 2);
 
 				setting.updateButton(buttonX, buttonY, buttonWidth);

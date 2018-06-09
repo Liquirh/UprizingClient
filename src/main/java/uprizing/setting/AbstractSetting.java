@@ -11,7 +11,7 @@ import uprizing.Stawlker;
 abstract class AbstractSetting extends Gui implements Setting { // TODO: Temporary extending Gui
 
 	private final String name, configKey;
-	private int buttonX, buttonY, buttonWidth, buttonHeight;
+	private int textX, textY, buttonX, buttonY, buttonWidth, buttonHeight;
 	private static final int DEFAULT_BUTTON_HEIGHT = 10;
 
 	AbstractSetting(final String name) {
@@ -35,26 +35,40 @@ abstract class AbstractSetting extends Gui implements Setting { // TODO: Tempora
 	}
 
 	@Override
+	public long getAsLong() {
+		return 0;
+	}
+
+	@Override
+	public int getAsInt() {
+		return 0;
+	}
+
+	@Override
 	public final boolean isHovered(int mouseX, int mouseY) { // TODO: enabled
 		return mouseX >= buttonX && mouseY >= buttonY && mouseX < buttonX + buttonWidth && mouseY < buttonY + buttonHeight;
 	}
 
 	public void drawButton(FontRenderer fontRenderer, int mouseX, int mouseY) {
-		if (isHovered(mouseX, mouseY)) {
+		final boolean hovered = isHovered(mouseX, mouseY);
+
+		if (hovered) {
 			drawSexyRect(buttonX, buttonY, buttonWidth, buttonHeight, Merguez.C);
 		}
 
-		drawString(fontRenderer, name + ": " + getAsString(), buttonX + 1 + 4 + 4, buttonY + 1, Merguez.D);
+		drawString(fontRenderer, name + ": " + getAsString(), textX, textY, Merguez.D);
 	}
 
 	@Override
 	public void pressButton(Minecraft minecraft) {
-		System.out.println("clicked button: " + name);
+		// TODO: LOGGER - System.out.println("clicked button: " + name);
 		//minecraft.getSoundHandler().playSound(PositionedSoundRecord.func_147674_a(new ResourceLocation("gui.button.press"), 1.0F));
 	}
 
 	@Override
 	public final void updateButton(int buttonX, int buttonY, int buttonWidth) {
+		this.textX = buttonX + 4 + 4 + 1;
+		this.textY = buttonY + 1;
 		this.buttonX = buttonX;
 		this.buttonY = buttonY;
 		this.buttonWidth = buttonWidth;
@@ -63,6 +77,6 @@ abstract class AbstractSetting extends Gui implements Setting { // TODO: Tempora
 
 	@Override
 	public final void resetButton() {
-		buttonX = buttonY = buttonWidth = buttonHeight = 0;
+		textX = textY = buttonX = buttonY = buttonWidth = buttonHeight = 0;
 	}
 }

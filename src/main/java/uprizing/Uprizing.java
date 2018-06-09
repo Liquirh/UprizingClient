@@ -75,7 +75,7 @@ public class Uprizing {
     }
 
     public void runTick(TickType tickType) {
-    	if (openMenuKeyBinding.isPressed()) {
+    	if (minecraft.currentScreen == null && openMenuKeyBinding.isPressed()) {
     		minecraft.displayGuiScreen(new GuiMenu(this));
 		}
 
@@ -90,6 +90,10 @@ public class Uprizing {
 
     public final boolean getBoolean(int index) {
     	return settings.get(index).getAsBoolean();
+	}
+
+	public final Setting getSetting(int index) {
+    	return settings.get(index);
 	}
 
     private void loadSettings() {
@@ -112,7 +116,7 @@ public class Uprizing {
 							setting.parseValue(args[1]);
 					}
                 } catch (Exception var91) {
-                    logger.warn("Skipping bad option: " + line);
+                    logger.warn("Skipping bad setting: " + line);
                     var91.printStackTrace();
                 }
             }

@@ -2,38 +2,36 @@ package uprizing.setting;
 
 import net.minecraft.client.Minecraft;
 
-public class BooleanSetting extends AbstractSetting {
+public class IntSetting extends AbstractSetting {
 
-	protected boolean value = false;
+	protected int value = 0;
 
-	public BooleanSetting(final String name) {
+	private final int maximum;
+
+	public IntSetting(final String name, final int maximum) {
 		super(name);
+		this.maximum = maximum;
 	}
 
 	@Override
 	public final String getConfigValue() {
-		return value ? "1" : "0";
+		return "" + value;
 	}
 
 	@Override
 	public final void parseValue(String configValue) {
-		value = configValue.equals("1");
+		value = Integer.parseInt(configValue);
 	}
 
 	@Override
-	public final boolean getAsBoolean() {
+	public final int getAsInt() {
 		return value;
-	}
-
-	@Override
-	public final String getAsString() {
-		return value ? "ON" : "OFF";
 	}
 
 	@Override
 	public void pressButton(Minecraft minecraft) {
 		super.pressButton(minecraft);
 
-		value = !value;
+		value = value == maximum ? 0 : value + 1;
 	}
 }
